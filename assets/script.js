@@ -16,11 +16,11 @@ function generatePassword() {
   //array that passwordSpecs => definePassword results will go into to make options for the random number (index value) generator to pick from
   var userPasswordArray = [ ];
 
-  //array that takes userPasswordArray and converts it to a strin before doing the random slection step
+  //array that takes userPasswordArray and converts it to a string before doing the random slection step
   var UserPasswordString = ("");
 
 
-  // variables 
+  // global variables 
   var YesUppercase
   var YesLowercase
   var YesSpecialCharacters
@@ -32,29 +32,26 @@ function generatePassword() {
 
 
 
-
   function error() {
     alert("You must select at least one type of character set/number of characters for your password.");
     generatePassword();
   }
 
 
-    //function to get initial specs of password, write a contingency function for if they dont choose any of the options? 
-    passwordSpecs();
-    
-    //passing info from passwordspecs into this if statment function to determine length of userPasswordArray.
-    definePassword(); 
+  //function to get initial specs of password, write a contingency function for if they dont choose any of the options? 
+  passwordSpecs();
+  
+  //passing info from passwordspecs into this if statment function to determine length of userPasswordArray.
+  definePassword(); 
 
-    //use a for loop to iterate a random math function over the whole length of the userPasswordArray for the number of times that PasswordLengthDefined dictates.
-    finalStringSelect();
+  //use a for loop to iterate a random math function over the whole length of the userPasswordArray for the number of times that PasswordLengthDefined dictates.
+  finalStringSelect();
 
-    //Taking UserPasswordString and returning it into the text field
-    returnPassword();
-
+  
   console.log(userPasswordArray);
-
+  
   //All my functions \/\/\/
-
+  
   function passwordSpecs() {
     YesUppercase = confirm( "Would you Like Uppercase letters? \n Click Okay for yes and Cancel for No.");
     YesLowercase = confirm( "Would you like lowercase letters? \n Click Okay for yes and Cancel for No.");
@@ -63,7 +60,7 @@ function generatePassword() {
     PasswordLengthDefined = prompt( "How many characters would you like? \n Please enter a number between 8 and 128.");
     
   }
-
+  
   function definePassword () {
     if ( YesUppercase === true ) {
       userPasswordArray = userPasswordArray.concat(uppercase);
@@ -80,30 +77,27 @@ function generatePassword() {
       return error()
     }
   }  
-
+  
   function finalStringSelect() { 
     for (var i = 0; i < PasswordLengthDefined; i++) {
       
-      console.log("### loop " + i);
+      // console.log("loop " + i);
       UserPasswordString = UserPasswordString + userPasswordArray[Math.floor(Math.random() * userPasswordArray.length)];
       
-    
+      
     }
     console.log(UserPasswordString);
-
+    
   }
-
-  function returnPassword() {
-    password = UserPasswordString;
-
-  }
-
-  console.log(UserPasswordString);
-
+  
+  // return UserPasswordString gives generatePassword() it's string value to enter into the text field.
+  return UserPasswordString;
+    
 }
+
 // Write password to the #password input
 function writePassword() {
-  var password = generatePassword();
+    var password = generatePassword();
   var passwordText = document.querySelector("#password");
   
   passwordText.value = password;
