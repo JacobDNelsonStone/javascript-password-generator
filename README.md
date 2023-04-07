@@ -6,5 +6,5 @@
 
 ## Links
 
-[Here's the link to the live site!](https://jacobdnelsonstone.github.io/javascript-password-generator-homework-3/)
+[Here's the link to the live site!](https://jacobdnelsonstone.github.io/javascript-password-generator/)
 
